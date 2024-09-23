@@ -18,6 +18,17 @@ class JsLoader implements IRoute{
             
             
         },['get'],false);
+        BasicRoute::add('/jsd3/(?P<file>[\w.\/\-]+).js',function($matches){
+
+            if (file_exists(  dirname(__DIR__,1).'/js/lib/'.$matches['file'].'.js' ) ){
+                App::contenttype('application/javascript');
+                App::etagFile( dirname(__DIR__,1).'/js/lib/'.$matches['file'].'.js' , true);
+                BasicRoute::$finished = true;
+                http_response_code(200);
+            }
+            
+            
+        },['get'],false);
 
     }
 }

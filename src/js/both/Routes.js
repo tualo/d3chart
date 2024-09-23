@@ -29,11 +29,12 @@ Ext.define('Tualo.routes.D3Chart', {
             }
         }
     },
-    url: 'd3chart/:{chartid})',
+    url: 'd3chart/:{chartid}',
     handler: {
         action: function (values) {
 
-            Ext.getApplication().addView('Tualo.D3Charts.Viewport', {
+            console.log('d3chart route', 'action', values);
+            Ext.getApplication().addView('Tualo.D3Chart.Viewport', {
                 chartId:  values.chartid
             });
             
